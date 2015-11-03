@@ -1,0 +1,57 @@
+{eval $library_notice = $_G['cache']['plugin']['library']['notice'];}
+<!--{if $library_notice}-->
+<div class="bm">
+    <div class="bm_h cl">
+        <h2>{lang library:library}{lang library:notice}</h2>
+    </div>
+    <div class="bm_c">
+        $library_notice
+    </div>
+</div>
+<!--{/if}-->
+
+<!--{if $_G['uid'] > 0}-->
+<div class="bm">
+    <div class="bm_h cl">
+        <h2>{lang library:nav}</h2>
+    </div>
+    <div class="bm_c">
+        <div id="userinfo" class="cl">
+            <p class="avatar"><!--{avatar($_G[uid],small)}--></p>
+            <p class="a_hl">{lang library:hello} {$_G[username]}</p>
+        </div>
+        <div id="user_nav" class="cl">
+            <ul>
+                <!--<li><a href="plugin.php?id=library:my">{lang library:my_library}</a></li>-->
+                <li><a href="plugin.php?id=library:my&action=favourite">{lang library:my_favourite}</a></li>
+                <!--{if 1 == LIBRARY_PRO }-->
+                <li><a href="plugin.php?id=library:my&action=info&uid=$_G['uid']&username=$_G['username']">{lang library:my_info}</a></li>
+                <!--{/if}-->
+            </ul>
+        </div>
+        <div id="admin_nav" class="cl">
+            <ul>
+                <!--{if 1 == $_G['library']['adminid']}-->
+                <li><a href="plugin.php?id=library:store&action=catalog">{lang library:catalog}</a></li>
+                <li><a href="plugin.php?id=library:store">{lang library:store}</a></li>
+                <!--{if 1 == LIBRARY_PRO }-->
+                <li><a href="plugin.php?id=library:reservation">{lang library:reservation}</a></li>
+                <li><a href="plugin.php?id=library:circulation&action=lend">{lang library:lend_book}</a></li>
+                <li><a href="plugin.php?id=library:circulation&action=return">{lang library:return_book}</a></li>
+                <li><a href="plugin.php?id=library:circulation">{lang library:circulation}</a></li>
+                <!--{/if}-->
+                <!--{/if}-->
+            </ul>
+        </div>
+    </div>
+</div>
+<!--{/if}-->
+
+<div class="bm">
+    <div class="bm_h cl">
+        <h2>{lang library:book}{lang library:category}</h2>
+    </div>
+    <div class="bm_c">
+        {$bookCategoryList}
+    </div>
+</div>

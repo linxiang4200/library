@@ -1,0 +1,35 @@
+{template library:book_header}
+<div id="wp" class="wp">
+    <div id="ct" class="ct2 wp cl">
+	{template library:sub_search}
+        <div class="mn">
+            <div class="bm bmw">
+		{template library:book_nav}
+		<div class="bm_c cl">
+		    <div class="z" style="width:100%;">
+			<script src="static/js/forum_post.js?{FORMHASH}" type="text/javascript"></script>
+			<div class="sadd z">
+				<dl>
+				    <dt>
+				    <span class="rq"></span><label for="">{lang auction:auc_cover}:</label></dt>
+				    </dt>
+				    <script>
+					fid = 0;
+				    </script>
+				    <dd><p><button type="button" class="pn" onclick="uploadWindow(function (aid, url){library_upload_book_cover_pic(aid, url);ATTACHORIMAGE = 1;})"><span>{lang upload}</span></button></p>
+					<input type="text" name="book_cover_pic_aid" id="book_cover_pic_aid" />
+					<input type="text" name="book_cover_pic_url" id="book_cover_pic_url" />
+					<div id="book_cover_pic_image"></div>
+				    </dd>
+				</dl>
+			    </div>
+		    </div>		    
+		</div>
+	    </div>
+	    
+	</div>
+	<div class="sd">
+	    {template library:nav}
+	</div>
+    </div>
+    {template library:footer}

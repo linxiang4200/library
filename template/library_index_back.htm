@@ -1,0 +1,109 @@
+<!--{template library:header}-->
+<div id="pt" class="bm cl">
+    <div class="z">
+	<a href="./" class="nvhm" title="{lang homepage}">$_G['setting']['bbname']</a><em>&raquo;</em>
+	<a href="plugin.php?id=library:index">{lang library:name}</a>
+    </div>
+</div>
+<div id="wp" class="wp">
+    <div id="ct" class="ct2 wp cl">
+	{template library:sub_search}
+        <div class="mn">
+
+	    <div class="bm bmw">
+		<div class="bm_h cl">
+		    <span class="y xw1">
+			<a href="plugin.php?id=library:book">{lang library:more}</a>
+		    </span>
+		    <h2>
+			{lang library:books_recommend}
+		    </h2>
+		</div>
+		<div class="bm_c cl">
+		    <div class="clct_list cl">
+			<!--{if $list_recommend}-->
+			<!--{loop $list_recommend $obj}-->
+			<div class="z new_book_item">
+			    <div class="new_pic">{eval library_bookCover($obj[bid],100)}</div>
+			    <div class="new_title"><a href="plugin.php?id=library:book&action=info&bid=$obj['bid']">$obj['title']</a></div>
+			</div>
+			<!--{/loop}-->
+			<!--{else}-->
+			<p class="emp">{lang library:no_record}</p>
+			<!--{/if}-->
+		    </div>
+		</div>
+	    </div>
+
+	    <div class="bm bmw">
+		<div class="bm_h cl">
+		    <span class="y xw1">
+			<a href="plugin.php?id=library:book">{lang library:more}</a>
+		    </span>
+		    <h2>
+			{lang library:books_new}
+		    </h2>
+		</div>
+		<div class="bm_c cl">
+		    <div class="clct_list cl">
+			<!--{if $list_new}-->
+			<!--{loop $list_new $obj}-->
+			<div class="z new_book_item">
+			    <div class="new_pic">{eval library_bookCover($obj[bid],100)}</div>
+			    <div class="new_title"><a href="plugin.php?id=library:book&action=info&bid=$obj['bid']">$obj['title']</a></div>
+			</div>
+			<!--{/loop}-->
+			<!--{else}-->
+			<p class="emp">{lang library:no_record}</p>
+			<!--{/if}-->
+		    </div>
+		</div>
+	    </div>
+		
+	    <div class="bm bmw">
+		<div class="bm_h cl">
+		    <span class="y xw1">
+			<a href="plugin.php?id=library:book">{lang library:more}</a>
+		    </span>
+		    <h2>
+			{lang library:books_hot}
+		    </h2>
+		</div>
+		<div class="bm_c cl">
+		    <div class="clct_list cl">
+			<div class="cl">
+			    <!--{if $list_hot}-->
+			    <table style="width:100%;">
+				<tr style="background-color: #F2F2F2;">
+				    <th>{lang library:bid}</th>
+				    <th>{lang library:book_title}</th>
+				    <th>{lang library:isbn}</th>
+				    <th>{lang library:status}</th>
+				    <th>{lang library:circulation_count}</th>
+				</tr>
+				<!--{loop $list_hot $obj}-->
+				<tr>
+				    <td>$obj['bid']</td>
+				    <td><a href="plugin.php?id=library:book&action=info&bid=$obj['bid']">$obj['title']</a></td>
+				    <td>$obj['isbn13']</td>
+				    <td>{eval library_bookCanLend($obj['bid'])}</td>
+				    <td>$obj['circulation_count']</td>
+				</tr>
+				<!--{/loop}-->
+			    </table>
+			    <!--{else}-->
+			    <p class="emp">{lang library:no_record}</p>
+			    <!--{/if}-->
+			</div>
+		    </div>
+		</div>
+	    </div>
+        
+
+	</div>
+
+	<div class="sd">
+	    {template library:nav}
+	</div>
+    </div>
+    {template library:footer}

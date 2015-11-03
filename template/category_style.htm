@@ -1,0 +1,20 @@
+
+<ul style=" padding:0px 10px 0 10px;">
+    {loop $categroy_style $c}
+    <li style="float:left; height:16px; padding:7px 10px 7px 10px; line-height:16px; {if $getcid == $c['cid']}background:#B79567;{/if}">
+    <a style=" {if $getcid == $c['cid']}color:#FFF;{else}color:#000;{/if}" href="plugin.php?id=library:book&action=$action&cid=$c['cid']&srchtxt=$srchtxt{if $action == 'searchpro'}&title=$title&author=$author&publisher=$publisher&pubdate=$pubdate&format=$format&tags=$tags&summary=$summary&pubdate_sy=$pubdate_sy&pubdate_ey=$pubdate_ey&exception=$exception&submitgf=$submitgf&submitsy=$submitsy{/if}">$c['name']<!--($c['num'])--></a>
+    </li>
+    {/loop}
+</ul> 
+{if $srchtxt != ''}
+<!--<div style="width:980px; height:15px; padding-top:70px; padding-bottom:20px; padding-right:200px;">
+<hr noshade color="#e6e6e6" />
+<div class="search_in_text">当前搜索数目统计：<span>200册， 共20种</span></div>
+<div class="search_in_input">
+<form action="plugin.php?id=library:book&action=search" onsubmit="searchFocus($('srchtxt'))" autocomplete="off" method="post" id="scform" target="_self">
+<input type="text" class="search_in_inputx" name="srchtxt"   value="在结果中筛选" onfocus="if(value=='在结果中筛选') {value=''}" onblur="if (value=='') {value='在结果中筛选'}"/><input  class="search_in_inputb" value="筛 选" type="submit" />
+</form>
+</div>
+</div>-->
+{/if}
+<br /><br />

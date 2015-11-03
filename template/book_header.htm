@@ -1,0 +1,13 @@
+<!--{template library:header}-->
+{if $action != 'index' && $action != 'activation'}
+<div id="pt" class="bm cl">
+    <div class="z">
+	<a href="./" class="nvhm" title="{lang homepage}">$_G['setting']['bbname']</a><em>&raquo;</em>
+	<a href="plugin.php?id=library:book">{lang library:name}</a><em>&raquo;</em>
+	<!--<a href="plugin.php?id=library:book">{lang library:book}</a>-->
+	<!--{if $action != 'index'}-->
+	{$navtitle}
+	<!--{/if}-->
+    </div>
+</div>
+{/if}

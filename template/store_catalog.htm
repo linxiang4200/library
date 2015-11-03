@@ -1,0 +1,74 @@
+{template library:store_header}
+<div id="wp" class="wp">
+    <div id="ct" class="ct2 wp cl">
+        <div class="mn">
+            <div class="bm bmw">
+		{template library:store_nav}
+		<div class="bm_c cl">
+		    <form method="post" action="plugin.php?id=library:store&action=catalog">
+                        <table cellspacing="0" cellpadding="0" class="tfm" border="0">
+                            <tbody>
+				<tr>
+				    <th>{lang library:isbn}</th>
+                                    <td>
+					<textarea name="isbns" class="pt" rows="10" style="width:120px;border:1px solid #848484;"></textarea>
+					<p class="xg1">
+					    {lang library:isbn_remark}
+                        <br />
+					    {lang library:one_isbn_per_line}
+                        <br />
+					    {lang library:not_too_much_isbns}
+					</p>
+				    </td>
+                                </tr>
+				<tr>
+				    <th>{lang library:warehouse}</th>
+				    <td><input name="warehouse" type="text" value="$store['warehouse']" class="px"/></td>
+				</tr>
+				<tr>
+				    <th>{lang library:accession_number}</th>
+				    <td><input name="accession_number" type="text" value="$store['accession_number']" class="px"/></td>
+				</tr>
+				<tr>
+				    <th>{lang library:owner}</th>
+				    <td><input name="owner" type="text" value="$store['owner']" class="px"/></td>
+				</tr>
+				<tr>
+				    <th>{lang library:replace}</th>
+				    <td>
+					<select name="replace">
+					    <option value='1'>{lang library:yes}</option>
+					    <option value='0'>{lang library:no}</option>
+					</select>
+				    </td>
+				</tr>
+				<tr>
+				    <th>{lang library:ignore_cahe}</th>
+				    <td>
+					<select name="force">
+					    <option value='0'>{lang library:no}</option>
+					    <option value='1'>{lang library:yes}</option>
+					</select>
+					<p class="xg1">{lang library:ignore_cahe_force_update_from_douban}</p>
+				    </td>
+				</tr>
+				<tr>
+				    <th></th>
+				    <td>
+					<button type="submit" name="operate" class="pn pnp" value="add">
+					    <strong>{lang add}</strong>
+					</button>
+				    </td>
+				</tr>
+                            </tbody>
+                        </table>
+                    </form>
+		</div>
+            </div>
+
+        </div>
+	<div class="sd">
+	    {template library:nav}
+	</div>
+    </div>
+    {template library:footer}

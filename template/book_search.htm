@@ -1,0 +1,166 @@
+{template library:book_header}
+<style>
+.td_title{ text-align:right; padding-right:10px;}
+.search_msg{ padding:8px 10px 8px 10px; background:#e7e5e5; color:#666666;}
+
+</style>
+
+<div id="wp" class="wp">
+    <div id="ct" class="ct2 wp cl">
+        <style> 
+.b_main{position: relative} 
+.out{ 
+position:absolute; 
+top:7px; 
+border-color:transparent #999999 transparent transparent; 
+border-style:dashed dashed solid dashed; 
+border-width:8px; 
+} 
+.in{ 
+position:absolute; 
+border-color:transparent #ffffff transparent transparent; 
+border-style:dashed dashed solid dashed; 
+border-width:8px; 
+top:-8px; 
+left:-6px; 
+} 
+.border{ 
+position:relative; 
+border:1px solid #999999; 
+padding:5px; 
+left:16px; 
+border-radius:5px; 
+
+}
+
+.ass{ width:372px;} 
+</style> 
+
+        <div class="mn" style="width:980px;">
+            <div class="bm bmw">
+                {template library:book_nav}
+                <div class="bm_c cl">
+                    <form name="bookform" action="plugin.php?id=library:book&action=searchpro" method="post" enctype="multipart/form-data">
+                        {if $action != 'add'}
+                        <input type="hidden" name="bid" value="$book['bid']" />
+                        {/if}
+                        <input type="hidden" name="formhash" value="{FORMHASH}" />
+                        <div class="z" style="width:100%;">
+                            <table cellspacing="0" cellpadding="0" class="tfm" border="0">
+                                <tbody>
+                                    <tr><td colspan="2" align="center">
+                                           
+                                                <div>
+                                                    <table border="0">
+                                                        <tr>
+                                                            <td width="60" align="right"><span class="td_title">{lang library:book_title}:</span></td>
+                                                            <td><input type="text" name="title" value="$book['title']" style="width:372px;" class="px" />  </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td width="60" align="right"><span class="td_title">{lang library:author}:</span></td>
+                                                            <td><input type="text" name="author" value="$book['author']" style="width:372px;"  class="px" />
+                                                             
+                                                            </td>
+                                                        </tr>
+                                                       <!-- <tr>
+                                                            <td width="60">{lang library:translator}:</td>
+                                                            <td><input type="text" name="translator" value="$book['translator']" class="px" /></td>
+                                                        </tr>-->
+                                                        <tr>
+                                                            <td width="60" align="right"><span class="td_title">出版者:</span></td>
+                                                            <td><input type="text" name="publisher" value="$book['publisher']" style="width:372px;"  class="px" /></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td width="60" align="right"><span class="td_title">{lang library:pubdate}:</span></td>
+                                                            <td style="line-height:30px; font-size:14px;">
+                                                            	<input type="text" name="pubdate_sy" value="$book['pubdate']" 
+                                                                style="width:40px;" maxlength="4" class="px" />年
+                                                                <input type="text" name="pubdate_sm" value="$book['pubdate']" 
+                                                                style="width:20px;" maxlength="2" class="px" />月
+                                                                 - 
+                                                                 <input type="text" name="pubdate_ey" value="$book['pubdate']" 
+                                                                style="width:40px;" maxlength="4" class="px" />年
+                                                                <input type="text" name="pubdate_em" value="$book['pubdate']" 
+                                                                style="width:20px;" maxlength="2" class="px" />月
+                                                            </td>
+                                                        </tr>
+                                                       <!-- <tr>
+                                                            <td width="60">{lang library:isbn}:</td>
+                                                            <td><input type="text" name="isbn13" value="$book['isbn13']" class="px" /> </td>
+                                                        </tr>-->
+                                                        <tr>
+                                                            <td width="60" align="right"><span class="td_title">开本:</span></td>
+                                                            <td><input type="text" name="format" value="$book['format']" style="width:372px;"  class="px" /> </td>
+                                                        </tr>
+                                                        
+                                                         <tr>
+                                                            <td width="60" align="right"><span class="td_title">图书分类:</span></td>
+                                                            <td>
+                                                            
+ <select name="cid" id="cid" class="px" style="text-align:center; height:30px; width:382px;" selecti="0" >
+
+<!--{loop $categoryarray $key $arr}-->
+<option value="$arr['cid']">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$arr['name']</option>
+<!--{/loop}-->
+</select>
+                                                            </td>
+                                                        </tr>
+                                                        
+                                                       
+                                                       
+                                                        <tr>
+                                                            <td width="60" align="right"><span class="td_title">{lang library:tags}:</span></td>
+                                                            <td>
+                                                            	<input type="text" name="tags" value="" style="width:372px;"  class="px" />
+                                                                <span class="search_msg">即图书上传时，书友设定的关键字</span>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td width="60" align="right"><span class="td_title">{lang library:summary}:</span></td>
+                                                            <td>
+                                                                <textarea id="summarymessage" name="summary" class="px" style="width:372px; height:100px;"  rows="5">$book['summary']</textarea>
+                                                                 <span style=" margin-top:20px; vertical-align:390%;" class="search_msg">只支持短句，词语</span>
+                                                            </td>
+                                                        </tr>
+                                                        
+                                                        <tr>
+                                                            <td width="80"  align="right"><span class="td_title">排除关键词:</span></td>
+                                                            <td>
+                                                            	<input type="text" name="exception" value="" class="px" style=" width:372px;" />
+                                                               
+                                                            </td>
+                                                        </tr>
+                                                         <tr>
+                                                            <td></td>
+                                                            <td>
+                                                           <!-- <button type="submit" name="submit" class="pn pnc" value="submit">
+                                                                    <span>{lang submit}</span>
+                                                                </button>-->
+                                                                
+                                                                <input type="submit" name="submitgf" value="1" style=" width:164px; height:40px; border:none;background:url(template/cmszs_360bbs/images/sgf.png); margin-left:0px; font-size:0px;" >
+                                                                <input type="submit" name="submitsy" value="1" style=" width:164px; height:40px; border:none;background:url(template/cmszs_360bbs/images/ssy.png); margin-left:50px;font-size:0px;" >
+                                                            </td>
+                                                        </tr>
+                                                        
+                                                        
+                                                                            
+                                                    </table>
+                                                </div>
+                                            </div>
+                                    </td></tr>
+                                    
+                                   
+                                  
+                                 
+                                   
+                                </tbody>
+                            </table>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+        
+    </div>
+    {template library:footer}

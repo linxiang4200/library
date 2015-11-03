@@ -1,0 +1,56 @@
+{template library:book_header}
+    
+<style>
+.activation_ul{ float:left; padding-top:30px; padding-left:60px;}
+.activation_ul li{ padding-top:15px; font-size:16px; float:left}
+.activation_ul .px{ width:336px; padding-left:10px;}
+.activation_ul .selected{height:30px; width:352px; padding-left:130px; }
+.sk_button{ width:124px; height:40px; border:none;margin-left:0px; background:#bc9c6c; color:#FFF; font-size:18px;
+ -moz-border-radius: 3px;   -webkit-border-radius: 3px;   border-radius:3px;   }
+.sk_act_sub{ padding:0 0 0 150px; }
+</style>
+<div id="wp" class="wp">
+    <div id="ct" class="ct2 wp cl" style=" width:980px; padding-top:90px;">
+	
+       
+
+            <div class="bm bmw">
+		<div class="bm_h cl">
+		    <h2>
+			 {$navtitle}
+			{eval $max_renew_count = intval($_G['cache']['plugin']['library']['book_max_renew_count']);}
+		    </h2>
+		</div>
+        
+		<div class="bm_c cl">
+			<div style="padding:20px 150px 20px 200px; text-align:center">
+            	<span style=" font-size:24px; color:#A98C63;">输入相关的信息即可激活个人图书管理系统<br />建立您的个人书库</span>
+                <form action="plugin.php?id=library:my&action=activation" method="post" enctype="multipart/form-data">
+                <ul class="activation_ul">
+                	<li>书库名称：<input name="shuku_name" type="text" class="px"/></li>
+                    <li>书库共享：<select name="share_status" class="px selected">
+                    	<option value="1">对所有人可见</option>
+                        <option value="0">仅自己可见</option>
+                        </select>
+                    </li>
+                    <li>书库封面：<input name="shuku_umg" type="file"  /></li>
+                  
+                    
+                </ul>
+                
+                <ul class="activation_ul">
+                 <li class="sk_act_sub"><input type="submit" name="submit" value="激活" class="sk_button"><br /><br /><br /><br /> </li>
+                 <li> <br /></li>
+                 
+                </ul>
+                </form>
+               <!-- <span class="sk_act_sub"><input type="submit" name="submitgf" value="激活" class="sk_button"></span>-->
+                
+                
+            </div>    
+        </div>
+
+        </div>
+	
+    </div>
+    {template library:footer}

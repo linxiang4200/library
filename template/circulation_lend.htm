@@ -1,0 +1,77 @@
+{template library:circulation_header}
+<script lang="text/javascript">
+    function force_lend(){
+        $('force_lend').value = 1;
+        $('lend_form').submit();
+    }
+    function lend_submit(){
+        var isbn =trim($('input_isbn').value);   
+        var sno =trim($('input_sno').value);   
+        var username =trim($('input_username').value);   
+        var url = 'plugin.php?id=library:reservation&action=json_is_trun_to'
+        +'&sno='+sno
+        +'&isbn='+isbn
+        +'&username='+username
+        + '&r' + Math.random();
+        var x = new Ajax();
+        x.get(url, function(s) {
+            var ret = eval('(' + s + ')');
+            if(ret.successed){
+                $('lend_form').submit();
+                }else{
+                if(ret.confirm){ showDialog(ret.msg, 'confirm', '', 'force_lend()', 1);
+                    }else{
+                    alert(ret.msg);
+                }
+            }
+        });  
+    }
+</script>
+<div id="wp" class="wp">
+    <div id="ct" class="ct2 wp cl">
+        <div class="mn">
+            <div class="bm bmw">
+                {template library:circulation_nav}
+                <div class="bm_c cl">
+                    <form id="lend_form" method="post" action="plugin.php?id=library:circulation&action=lend">
+                        <input type="hidden" id="force_lend" name="force" value="0" />
+                        <table cellspacing="0" cellpadding="0" class="tfm" border="0">
+                            <tbody>
+                                <tr>
+                                    <th>{lang library:isbn}</th>
+                                    <td>
+                                        <input id="input_isbn" name="isbn" type="text" value="$isbn" class="px"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>{lang library:sno}</th>
+                                    <td>
+                                        <input id="input_sno" name="sno" type="text" value="$sno" class="px"/>
+                                        <p class="xg1">{lang library:input_on_mutile_book}</p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>{lang library:lender}</th>
+                                    <td><input id="input_username" name="username" type="text" value="$username" class="px"/>
+                                        <p class="xg1">{lang username}</p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th></th>
+                                    <td>
+                                        <button type="button" name="operate" class="pn pnp" value="add" onclick="lend_submit()">
+                                            <strong>{lang submit}</strong>
+                                        </button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+        <div class="sd">
+            {template library:nav}
+        </div>
+        {template library:footer}

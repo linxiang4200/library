@@ -1,0 +1,156 @@
+{template library:book_header}
+<div id="wp" class="wp">
+    <div id="ct" class="ct2 wp cl">
+        
+        <div class="mn" style=" width:980px;">
+            <div class="bm bmw">
+                {template library:book_nav}
+                <div class="bm_c cl">
+                    <div class="z" style="width:100%; font-size:14px;">
+                        <table cellspacing="0" cellpadding="0" class="tfm" border="0">
+                            <tbody>
+                                <tr><td colspan="2">
+                                        <div style="width:100%">
+                                            <div class="z" style="width:310px;">
+                                               {eval library_bookCover($book[bid], 250, false, true)}
+                                            </div>
+                                            <div class="z">
+                                                <table border="0">
+                                                    <tr><td width="80">{lang library:book_title}:</td><td>$book['title']</td></tr>
+                                                    
+                                                           
+                                                    <!--{if $book['author']}--><tr><td>{lang library:author}:</td><td>$book['author']</td></tr><!--{/if}-->
+                                                    
+                                                    <!--{if $book['publisher']}--><tr><td>{lang library:publisher}:</td><td>$book['publisher']</td></tr><!--{/if}-->
+                                                    <!--{if $book['pubdate']}--><tr><td>{lang library:pubdate}:</td><td>$book['pubdate']</td></tr><!--{/if}-->
+                                                     <!--{if $book['format']}--><tr><td>开本:</td><td>$book['format']开</td></tr><!--{/if}-->
+                                                     <!--{if $book['pages']}--><tr><td>{lang library:pages}:</td><td>$book['pages']</td></tr><!--{/if}-->
+                                                    <!--{if $book['category']}--><tr><td>{lang library:category}:</td><td>$book['category']</td></tr><!--{/if}-->
+                                                    <!--{if $book['notes']}--><tr><td width="60">附注:</td><td width="500">$book['notes']</td></tr><!--{/if}-->
+                                                    <!--{if $book['binding']}--><tr><td>{lang library:binding}:</td><td>$book['binding']</td></tr><!--{/if}-->
+                                                   <!--{if $book['tags']}--><tr><td width="60">{lang library:tags}:</td><td>$book['tags']</td></tr><!--{/if}-->
+                                                    
+                                                    <!--{if $book['rating']}--><tr><td>{lang library:rating}:</td><td>$book['rating']</td></tr><!--{/if}-->
+                                                    <!--{if $book['summary']}--><tr><td width="60">{lang library:summary}:</td><td width="500">$book['summary']</td></tr><!--{/if}-->
+                                                   
+                                                </table>
+                                            </div>
+
+                                            
+                                        </div>
+                                </td></tr>
+                               
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+         
+
+            <!--{if $previewImages}-->
+            <div class="bm">
+                <div class="bm_h cl">
+                    <h2>{lang library:preview_image}</h2>
+                </div>
+                <div class="bm_c cl">
+                    <!--{loop $previewImages $obj}-->
+                    <div class="z library_book_previewpic_item">
+                        <div class="new_pic">{eval library_bookPreview($obj, 200, true)}</div>
+                    </div>
+                    <!--{/loop}-->
+                </div>
+            </div>
+            <!--{/if}-->
+
+            <div class="bm">
+                <div class="bm_h cl">
+                    <h2>{lang library:comment}</h2>
+                </div>
+                <div class="bm_c cl">
+                    <!--{if $comments}-->
+                    <table cellspacing="0" cellpadding="10" width="100%">
+                        <tr>
+                            <th style="width:100px;">{lang library:time}</th>
+                            <th style="width:100px;">{lang library:author}</th>
+                            <th>{lang library:content}</th>
+                            <!--{if 1== $_G['library']['adminid']}-->
+                            <th class="y">{lang library:admin}</th>
+                            <!--{/if}-->
+                        </tr>
+                        <!--{loop $comments $key $obj}-->
+                        <tr>
+                            <td>{$obj['udateline']}</td>
+                            <td>
+                                <a href="plugin.php?id=library:index&action=reader&uid=$obj['uid']" target="_blank">
+                                    {$users[$obj['uid']]['username']}
+                                </a>
+                            </td>
+                            <td>{$obj['content']}</td>
+                            <!--{if 1 == $_G['library']['adminid']}-->
+                            <td class="y">
+                                <a href="javascript:library_confirm_msg('plugin.php?id=library:book&action=delete_comment&bid=$book['bid']&bcid=$obj['bcid']','{lang library:delete_confirm}')">{lang delete}</a>
+                            </td>
+                            <!--{/if}-->
+                        </tr>
+                        <!--{/loop}-->
+                    </table>
+                    <div class="cl" style="padding-top:10px;">
+                        {$commentMulti}
+                    </div>
+                    <!--{/if}-->
+                    <form name="commentform" action="" method="post" enctype="multipart/form-data">
+                        <input type="hidden" name="bid" value="$book['bid']" />
+                        <input type="hidden" name="formhash" value="{FORMHASH}" />
+                        <table cellspacing="0" cellpadding="10" width="100%">
+                            <tr>
+                                
+                                <td><textarea id="newComment" name="newComment" class="pt" style="width:900px;" cols="80" rows="5"></textarea></td>
+                            </tr>
+                            <tr>
+                                 
+                                <td align="center"><button type="submit" name="submit" class="pn pnc" value="submit">
+                                        <span>{lang submit}</span>
+                                    </button>
+                                </td>
+                            </tr>
+                        </table>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+        <div class="sd">
+           
+            
+            </div>
+            <!--{if $circulations}-->
+            <div class="bm">
+                <div class="bm_h cl">
+                    <h2>{lang library:circulation}</h2>
+                </div>
+                <div class="bm_c cl">
+                    <table style="width:100%;">
+                        <tr style="background-color: #F2F2F2;">
+                            <th>{lang library:type}</th>
+                            <th>{lang library:reader}</th>
+                            <th>{lang library:time}</th>
+                            <th>{lang library:admin}</th>
+                        </tr>
+                        <!--{loop $circulations $obj}-->
+                        <tr>
+                            <td>$circulation_type[$obj['type']]</td>
+                            <td>$obj['reader']['username']</td>
+                            <td>$obj['dateline']</td>
+                            <td>$obj['admin']['username']</td>
+                        </tr>
+                        <!--{/loop}-->
+                    </table>
+                </div>
+            </div>
+            <!--{/if}-->
+
+        </div>
+    </div>
+    {template library:footer}
+

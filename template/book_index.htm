@@ -1,0 +1,218 @@
+{template library:book_header}
+<style>
+body img{-moz-border-radius: 0px;-khtml-border-radius: 0px;-webkit-border-radius: 0px;border-radius: 0px;}
+.inventory_img{display:none;z-index:200;zoom:1;position:absolute; left:400px;width:240px;height:290px;margin:0px;padding:2px; border:#BC9C6C 1px solid; background:#FFF}
+.inventory_img img{width:230px;height:230px;margin:0px;padding:5px 0px 0px 5px;}
+.inventory_ul img{vertical-align:middle; width:75px; height:105px; padding-right:10px;}
+
+.sort_type_on{ background:#bc9c6c; color:#FFF; padding:5px 20px 5px 20px;}
+.sort_type_on a{ color:#fff;}
+.sort_type{ border:solid 1px #cfcece; color:#6d6d6d; padding:5px 10px 5px 10px;}
+.sort_type a { color:#6d6d6d;}
+.sort_name{ font-weight:bold; padding-right:10px;}
+
+.search_in_text{ color:#6d6d6d; float:left; padding:20px 50px 20px 160px; font-size:15px;}
+.search_in_text span{  color:#daac74; font-size:18px; }
+.search_in_input{ padding:10px 20px 20px 0px;}
+.search_in_inputx{ width:220px; border:1px solid #daac74; height:18px; padding:10px; color:#999}
+.search_in_inputb{ background:#daac74; border:none; width:80px; height:40px; padding-bottom:3px;*padding-bottom:5px;color:#fff; font-size:16px; font-weight:bold;}
+</style>
+<script src="source/plugin/library/template/lightbox.min.js"></script>
+<link rel="stylesheet" href="source/plugin/library/template/lightbox.css">
+
+
+<div id="wp" class="wp">
+    <div id="ct" class="ct2 wp cl">
+	{template library:sub_search}
+    
+        {if $action == 'searchpro'}
+        <div class="mn" style=" width:980px;">
+             <div class="bm bmw">
+                <div class="bm_h cl">
+                    <h2>搜索条件</h2>
+                </div>
+                <div class="bm_c cl"  style=" padding:15px;">
+                    <span>
+                    搜索关键词: <font style="color:#B79567">$title $author $publisher $pubdate $format $tags $summary</font>
+                    </span>
+                    <span style="padding-left:50px;">
+                    排除关键词: <font style="color:#B79567">$exception</font>
+                    </span>
+                    
+                </div>
+             
+             </div>
+        </div>
+        {/if}
+    
+    
+        <div class="mn" style=" width:980px;">
+         <div class="bm bmw">
+		{template library:book_nav}
+		<div class="bm_c cl" style="padding: 10px 0 10px 0;">
+		    <div class="clct_list cl" style=" width:980px;">
+            
+            {template library:category_style}
+			<!--{if $list}-->
+			<div class="cl tl">
+			    <table style="width:100%;">
+                
+                <tr style="height:10px;background-color: #F7F7F7; border-top:#E6E6E6 solid 1px;border-bottom:#E6E6E6 solid 1px; font-size:15px;">
+                  		   
+				</tr>
+              
+				<tr style="height:48px;background-color: #F7F7F7; border-top:#E6E6E6 solid 1px;border-bottom:#E6E6E6 solid 1px; font-size:15px;">
+                    <th></th>
+				   		{template library:sort_style}
+                    <th></th>
+				</tr>
+             
+                
+				<!--{loop $list $key $obj}-->
+                 <tr height="65">
+                    <td style="padding: 5px;  border-bottom: #FFF 1px solid;">
+                        <!-- { eval library_bookCover($obj[bid]) } -->
+                         
+                    </td>
+				    <td>
+                   
+                     <ul class="inventory_ul">
+                  	  <li style=" padding:5px 0;"><span class="inventory_message_span">
+                     
+                      <a class="example-image-link" href="{eval library_bookCoverUrl($obj[bid])}" data-lightbox="example-1"><img class="example-image" src="{eval library_bookCoverUrl($obj[bid])}" alt="image"/></a>
+                      
+                        <a href="plugin.php?id=library:book&action=info&bid=$obj['bid']">$obj['title']</a>
+                        <!-- {if $obj['uid'] != 1}
+                        <img style="-webkit-border-radius:0px;vertical-align:middle; padding-bottom:5px;" src="template/cmszs_360bbs/images/shuyou.gif" />
+                        {else}
+                        <img style="-webkit-border-radius:0px;vertical-align:middle; padding-bottom:5px;" src="template/cmszs_360bbs/images/guanfang.gif" />
+                        
+                        {/if}-->
+                        <!-- <h5 class="inventory_img">{eval library_bookCover($obj[bid])} 
+                        
+                         <input type="button" onclick="showWindow('mods', 'plugin.php?id=library:my&action=favourite_add&bid=$obj["bid"]', 'get', 0)" style=" position:relative; margin:10px 0px 0 35px;50px;width:180px; height:40px; border:none;background:url(template/cmszs_360bbs/images/shoucang.jpg);" />
+                         </h5>-->
+                        </span>
+                        
+                      </li>
+                        <!--<br />$obj['isbn13']-->
+                       
+                        
+                    </ul>
+                    </td>
+				    <td style="padding-left:10px;">{if $obj['author'] == ''}不详{else}$obj['author']{/if}</td>
+				    <td style="padding-left:10px;">$obj['publisher']</td>
+				    <td style="padding-left:10px;">$obj['pubdate']</td>
+				    <td style="padding-left:10px;">$obj['format']开</td>
+				    <td style="padding-left:10px;" class="by">{if $obj['category'] == ''}无分类{else}$obj['category']{/if}</td>
+				    <td style="padding-left:10px;" class="by">$obj['notes']</td>
+                    <td  style="padding-left:10px;"class="by">{eval echo cutstr($obj['tags'],4,'...')}</td>
+                    <td style="padding: 5px; border-bottom:#FFF 1px solid;"></td>
+				</tr>
+				<!--{/loop}-->
+			    </table>
+			</div>
+			<div class="cl" style="padding:10px 10px 0 10px;">
+			    $multi
+			</div>
+			<!--{else}-->
+            <br /><br /><br />
+			<p class="emp">{lang library:no_record}</p>
+			<!--{/if}-->
+		    </div>
+		</div>
+            </div>
+
+        </div>
+        <!--
+	<div class="sd">
+	    { template library:nav }
+	</div>
+    	-->
+    </div>
+    
+    <script language="javascript" type="text/javascript">
+	
+/*! 
+* jQuery.mouseDelay.js v1.2 
+* http://www.planeart.cn/?p=1073 
+* Copyright 2011, TangBin 
+* Dual licensed under the MIT or GPL Version 2 licenses. 
+*/ 
+(function ($, plugin) { 
+var data = {}, id = 1, etid = plugin + 'ETID'; 
+// 延时构造器 
+$.fn[plugin] = function (speed, group) { 
+id ++; 
+group = group || this.data(etid) || id; 
+speed = speed || 150; 
+// 缓存分组名称到元素 
+if (group === id) this.data(etid, group); 
+// 暂存官方的hover方法 
+this._hover = this.hover; 
+// 伪装一个hover函数，并截获两个回调函数交给真正的hover函数处理 
+this.hover = function (over, out) { 
+over = over || $.noop; 
+out = out || $.noop; 
+this._hover(function (event) { 
+var elem = this; 
+clearTimeout(data[group]); 
+data[group] = setTimeout(function () { 
+over.call(elem, event); 
+}, speed); 
+}, function (event) { 
+var elem = this; 
+clearTimeout(data[group]); 
+data[group] = setTimeout(function () { 
+out.call(elem, event); 
+}, speed); 
+}); 
+return this; 
+}; 
+return this; 
+}; 
+// 冻结选定元素的延时器 
+$.fn[plugin + 'Pause'] = function () { 
+clearTimeout(this.data(etid)); 
+return this; 
+}; 
+// 静态方法 
+$[plugin] = { 
+// 获取一个唯一分组名称 
+get: function () { 
+return id ++; 
+}, 
+// 冻结指定分组的延时器 
+pause: function (group) { 
+clearTimeout(data[group]); 
+} 
+}; 
+})(jQuery, 'mouseDelay'); 
+	/*
+jQuery(window).load(function() {
+	jQuery('ul.inventory_ul li span').mouseDelay(150).hover(function(){
+		
+		var img_width = jQuery(this).width() + 220;
+		
+		jQuery(this).find(".inventory_img").css('left', img_width + "px");
+		
+		jQuery(this).find(".inventory_img").stop().show(0);
+	    }, function () {
+			jQuery(this).find(".inventory_img").stop().hide(0);
+			
+	});
+});
+*/
+function book_img_show(a,b)
+{
+		var img_width = jQuery(a).width();
+		jQuery('#book_img_'+b).css('left', img_width + "px");
+		jQuery('#book_img_'+b).stop().slideToggle(800);	
+}
+
+function book_img_hide(b)
+{
+	jQuery('#book_img_'+b).stop().slideToggle(800);	
+}
+</script>
+    {template library:footer}

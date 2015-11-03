@@ -1,0 +1,194 @@
+{template library:book_header}
+<style>
+.search_msg{ padding:8px 10px 8px 10px; background:#e7e5e5; color:#666666;}
+</style>
+<div id="wp" class="wp">
+    <div id="ct" class="ct2 wp cl">
+        {template library:sub_search}
+        <div class="mn" style="width:980px;">
+            <div class="bm bmw">
+                {template library:book_nav}
+                <div class="bm_c cl">
+                    <form name="bookform" action="" method="post" enctype="multipart/form-data">
+                        {if $action != 'add'}
+                        <input type="hidden" name="bid" value="$book['bid']" />
+                        {/if}
+                        <input type="hidden" name="formhash" value="{FORMHASH}" />
+                        <div class="z" style="width:100%;">
+                            <table cellspacing="0" cellpadding="0" class="tfm" border="0">
+                                <tbody>
+                                    <tr><td colspan="2">
+                                            <div style="width:80%">
+                                                <div class="y" style="width:180px;">
+                                                    <div style="margin: 10px 0px 10px 0px">
+                                                        <span>{lang library:upload}{lang library:cover_image}</span>
+                                                        <input type="file" name="cover" class="pf mbm" />
+                                                        <br />
+                                                        <!--{if $book['cover_image']}-->
+                                                        <a href="{$_G['siteurl']}data/attachment/common/$book['cover_image']" target="_blank"><img src="{$_G['siteurl']}data/attachment/common/$book['cover_image']" border="0" width="150"/></a>
+                                                        <br />
+                                                        <a href="{$_G['siteurl']}plugin.php?id=library:book&action=delete_cover&bid=$book['bid']">{lang library:delete}</a>
+                                                        <!--{/if}-->
+                                                    </div>
+
+                                                    <div style="margin: 10px 0px 10px 0px">
+                                                        <!--{if $book['douban_image']}-->
+                                                        <span>{lang library:douban_image}</span>
+                                                        <a href="{$_G['siteurl']}plugin.php?id=library:pic&file=$book['douban_image']" target="_blank"><img src="{$_G['siteurl']}plugin.php?id=library:pic&file=$book['douban_image']" border="0" width="150"/></a>
+                                                        <!--{/if}-->
+                                                    </div>
+
+                                                </div>
+                                                <div class="z">
+                                                    <table border="0">
+                                                        <tr>
+                                                            <td width="60">{lang library:book_title}:</td>
+                                                            <td><input type="text" name="title" value="$book['title']" class="px" /> * </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td width="60">{lang library:author}:</td>
+                                                            <td><input type="text" name="author" value="$book['author']" class="px" /></td>
+                                                        </tr>
+                                                       <!-- <tr>
+                                                            <td width="60">{lang library:translator}:</td>
+                                                            <td><input type="text" name="translator" value="$book['translator']" class="px" /></td>
+                                                        </tr>-->
+                                                        <tr>
+                                                            <td width="60">{lang library:publisher}:</td>
+                                                            <td><input type="text" name="publisher" value="$book['publisher']" class="px" /></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td width="60">{lang library:pubdate}:</td>
+                                                            <td><input type="text" name="pubdate" value="$book['pubdate']" class="px" /></td>
+                                                        </tr>
+                                                       <!-- <tr>
+                                                            <td width="60">{lang library:isbn}:</td>
+                                                            <td><input type="text" name="isbn13" value="$book['isbn13']" class="px" /> </td>
+                                                        </tr>-->
+                                                        <tr>
+                                                            <td width="60">开本:</td>
+                                                            <td><input type="text" name="format" value="$book['format']" class="px" /><span class="search_msg">只填写数字即可</span> </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td width="60">{lang library:pages}:</td>
+                                                            <td><input type="text" name="pages" value="$book['pages']" class="px" /></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td width="60">{lang library:binding}:</td>
+                                                            <td><input type="text" name="binding" value="$book['binding']" class="px" /></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td width="60">{lang library:price}:</td>
+                                                            <td><input type="text" name="price"  onkeyup="this.value=this.value.replace(/\。/g,'')" onafterpaste="this.value=this.value.replace(/\。/g,'')" value="$book['price']" class="px" /></td>
+                                                        </tr>
+                                                        
+                                                       <!-- <tr>
+                                                            <td width="60">{lang library:rating}:</td>
+                                                            <td><input type="text" name="rating" value="$book['rating']" class="px" /></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td width="60">{lang library:douban_id}:</td>
+                                                            <td><input type="text" name="douban_id" value="$book['douban_id']" class="px" /></td>
+                                                        </tr>-->
+                                                        <tr>
+                                                            <td width="60">{lang library:tags}:</td>
+                                                            <td>
+                                                                <input type="text" name="tags" class="px" value="$book['tags']">
+                                                            </td>
+                                                        </tr>
+                                                       
+                                                        <tr>
+                                                            <td width="60">{lang library:category}:</td>
+                                                            <td>
+                                                                <select name="cids" id="cids" class="px" style="text-align:center; height:30px; width:342px;" selecti="0" >
+
+<!--{loop $categoryarray $key $arr}-->
+<option value="$arr['cid']" {if $book['cids'] == $arr['cid']}selected="selected"{/if}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+$arr['name']</option>
+<!--{/loop}-->
+</select>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                    </td></tr>
+                                   <!-- <tr>
+                                        <td width="60">{lang library:editor_recommendation}:</td>
+                                        <td>
+                                            <textarea id="editor_recommendation" name="editor_recommendation" class="pt" style="width:600px;" cols="80" rows="20">$book['editor_recommendation']</textarea>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td width="60">{lang library:author-intro}:</td>
+                                        <td>
+                                            <textarea name="author-intro" class="pt" style="width:600px;" cols="80" rows="10">$book['author-intro']</textarea>
+                                        </td>
+                                    </tr>-->
+                                    <tr>
+                                        <td width="60">{lang library:summary}:</td>
+                                        <td>
+                                            <textarea id="summarymessage" name="summary" class="px" style="width:332px; height:90px;" cols="80" rows="4">$book['summary']</textarea>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td width="60">附注:</td>
+                                        <td>
+                                            <textarea id="notes" name="notes" class="px" style="width:332px; height:90px;" cols="80" rows="4">$book['notes']</textarea>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td width="60">{lang library:preview_image}:</td>
+                                        <td>
+                                            <!--{if $previewImages}-->
+                                            <!--{loop $previewImages $obj}-->
+                                            {eval library_bookPreview($obj,200)}  <a href="{$_G['siteurl']}plugin.php?id=library:book&action=delete_preview&aid=$obj['aid']&bid=$book['bid']">{lang library:delete}</a><hr />
+                                            <!--{/loop}-->
+                                            <!--{/if}-->
+
+                                            <input type="file" name="preview[]" class="pf mbm" /><br />
+<!--                                            <input type="file" name="preview[]" class="pf mbm" /><br />
+                                            <input type="file" name="preview[]" class="pf mbm" /><br />
+                                            <input type="file" name="preview[]" class="pf mbm" /><br />
+                                            <input type="file" name="preview[]" class="pf mbm" /><br />-->
+                                        </td>
+                                    </tr>
+                                    {if $action == 'add'}
+                                    <!--<tr>
+                                        <td width="60">{lang library:catalog}:</td>
+                                        <td>
+                                            <table>
+                                                <tr>
+                                                    <th>{lang library:warehouse}</th>
+                                                    <td><input name="warehouse" type="text" value="$store['warehouse']" class="px"/></td>
+                                                </tr>
+                                                <tr>
+                                                    <th>{lang library:accession_number}</th>
+                                                    <td><input name="accession_number" type="text" value="$store['accession_number']" class="px"/></td>
+                                                </tr>
+                                                <tr>
+                                                    <th>{lang library:owner}</th>
+                                                    <td><input name="owner" type="text" value="$store['owner']" class="px"/></td>
+                                                </tr>
+                                            </td>
+                                        </tr>
+                                    </table>-->
+                                    {/if}
+                                    <tr>
+                                        <td></td>
+                                        <td><button type="submit" name="submit" style="width:120px; height:40px; font-size:18px;" class="pn pnc" value="submit">
+                                                <span>{lang submit}</span>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+        
+    </div>
+    {template library:footer}

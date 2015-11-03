@@ -1,0 +1,136 @@
+/* 
+Document   : library
+Created on : 2012-6-29, 10:57:09
+Author     : GavinYao<yaojungang@comsenz.com>
+Description:
+Purpose of the stylesheet follows.
+ */
+
+root {
+    display: block;
+}
+
+#userinfo{
+    margin: 10px;
+}
+#userinfo .avatar {
+    float: left;
+}
+#userinfo .a_hl {
+    float: left;
+    width: 100px;
+    padding: 0px 5px 0px 10px;
+}
+.a_hl {
+    overflow: hidden;
+}
+
+a.button_my_library:hover {
+    color:#fff;
+    border-color:#3278BE;
+
+    background:#4195DD;
+    background:-webkit-gradient(linear, 0% 0%, 0% 100%, from(#4195DD), to(#003C82));
+    background:-moz-linear-gradient(0% 90% 90deg, #003C82, #4195DD);
+}
+a.button_my_library:active {
+    background:#4195DD;
+    background:-webkit-gradient(linear, 0% 0%, 0% 100%, from(#003C82), to(#4195DD));
+    background:-moz-linear-gradient(0% 90% 90deg, #4195DD, #003C82);
+}
+
+a.button_my_library.notransitions {
+    -webkit-transition: none;
+    -moz-transition: none;
+    -o-transition: none;
+    transition: none;
+}
+
+#admin_nav{
+    margin: 0 auto 0 auto;
+}
+#admin_nav a{
+    margin-left: 10px;
+    margin-bottom: 10px;
+    float: left;
+    width: 60px;
+    height: 30px;
+    line-height: 30px;
+    padding-left: 20px;
+    color:white;
+    font-size:15px;
+    background-color:#bc9c6c;
+    border-color:#bc9c6c;
+    border:1px solid;
+}
+
+#admin_nav a:hover {
+    font-weight:bold;
+    text-decoration: none;
+    background-color:black;
+}
+
+#user_nav {
+    margin: 0 auto 0 auto;
+}
+#user_nav a{
+    margin-left: 10px;
+    margin-bottom: 10px;
+    text-align: center;
+    float: left;
+    width: 170px;
+    height: 30px;
+    line-height: 30px;
+    font-size:15px;
+    color:white;
+    background-color:#2B7ACD;
+    border-color:#C2D5E3;
+    border:1px solid;
+}
+#user_nav a:hover {
+    font-weight:bold;
+    text-decoration: none;
+    background-color:black;
+}
+
+.tl td{
+    border-bottom: 1px solid #C2D5E3;
+}
+.new_book_item{
+    width: 130px;margin: 5px;overflow: hidden;
+}
+.new_book_item .new_pic{
+    width: 110px;height: 160px;overflow: hidden;margin: 0 auto 0 auto;
+}
+.new_book_item .new_title{
+    width: 110px;height: 20px;overflow: hidden;margin: 0 auto 0 auto;
+}
+
+.library_btn_mini{
+    margin-top: 0px;
+}
+.library_btn_mini a{
+    padding: 3px 6px 3px 6px;
+    color: white !important;
+    border: 1px solid #bc9c6c;
+    background-color: #bc9c6c;
+    background-position:0 -48px;
+    text-align: center;
+    text-decoration: none;
+}
+
+.library_btn_mini a:hover {
+    font-weight:bold;
+    text-decoration: none;
+    background-color:black;
+}
+.library_book_previewpic_item{
+    width: 225px;
+    margin: 5px;overflow: hidden;
+}
+.library_book_previewpic_item .new_pic{
+    width: 210px;overflow: hidden;margin: 0 auto 0 auto;
+}
+.library_book_previewpic_item .new_title{
+    width: 210px;height: 20px;overflow: hidden;margin: 0 auto 0 auto;
+}

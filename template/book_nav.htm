@@ -1,0 +1,65 @@
+<div class="bm_h cl">
+    <span class="y xw1 library_btn_mini">
+        <!--{if $_G['uid'] && 'info' == $action}-->
+        <!--{if 1 == LIBRARY_PRO }-->
+        <a href="plugin.php?id=library:reservation&action=apply&bid=$book['bid']">{lang library:reservation}</a>
+        <!--{/if}-->
+         <!--{if 1 == $_G['uid']}--><a href="plugin.php?id=library:book&action=add">我要上传图书</a><!--{/if}-->
+        <a href="javascript:;" onclick="showWindow('mods', 'plugin.php?id=library:my&action=favourite_add&bid=$book["bid"]', 'get', 0)">{lang library:favourite}</a>
+         
+          <!--{if 1== $_G['library']['adminid'] or $_G['uid'] == $book['uid']}-->
+        
+        
+        
+        <a href="plugin.php?id=library:book&action=edit&bid=$book['bid']">{lang edit}</a>
+        <a href="javascript:library_confirm_msg('plugin.php?id=library:book&&action=delete&bid=$book['bid']','{lang library:delete_confirm}')">{lang library:delete}</a>
+        <!--{if 1 == LIBRARY_PRO }-->
+        <!--<a href="plugin.php?id=library:circulation&action=lend&username=$_G['username']&isbn=$book['isbn13']">{lang library:lend_book}</a>-->
+        <!--{/if}-->
+        <!--{/if}-->
+        <!--{/if}-->
+    </span>
+    <h2 id="tips_show">
+        {$navtitle}
+        {if $action == 'info'}
+            {if $book['uid'] != 1}
+            <img style="-webkit-border-radius:0PX;vertical-align:middle; padding-bottom:5px;" id="2"  src="template/cmszs_360bbs/images/shuyou.gif" />
+            
+            {else}
+            <img style="-webkit-border-radius:0PX;vertical-align:middle; padding-bottom:5px;" id="1"  src="template/cmszs_360bbs/images/guanfang.gif" />
+            {/if}
+        {/if}
+        
+        {if $action == 'searchpro' && ($isgf == 1 || $issy == 1)}
+        {if $isgf != 1}
+        <img style="-webkit-border-radius:0PX;vertical-align:middle; padding-bottom:5px;"  src="template/cmszs_360bbs/images/shuyou.gif" />
+        {else}
+        <img style="-webkit-border-radius:0PX;vertical-align:middle; padding-bottom:5px;" src="template/cmszs_360bbs/images/guanfang.gif" />
+        {/if}
+        {/if}
+        
+        <img id="tips_gf" style="-webkit-border-radius:0PX;vertical-align:middle;padding-bottom:2px; display:none;"  src="template/cmszs_360bbs/images/tips_gf.png" />
+        <img id="tips_sy" style="-webkit-border-radius:0PX;vertical-align:middle;padding-bottom:2px; display:none;"  src="template/cmszs_360bbs/images/tips_sy.png" />
+        
+    </h2>
+</div>
+<script type="text/javascript">
+jQuery('#tips_show img').hover(function(){
+	show_bktips(this.id);
+});
+
+
+
+function show_bktips(id)
+{
+	if(id == 1)
+	{
+		var ids = 'tips_gf';
+	}else if(id == 2){
+		var ids = 'tips_sy';
+	}
+	
+	jQuery('#'+ids).stop().slideToggle(0);
+;
+}
+</script>

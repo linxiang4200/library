@@ -1,0 +1,47 @@
+{template library:store_header}
+<div id="wp" class="wp">
+    <div id="ct" class="ct2 wp cl">
+        <div class="mn">
+            <div class="bm bmw">
+                {template library:store_nav}
+                <div class="bm_c cl">
+                    <form method="post" action="plugin.php?id=library:store&action=add">
+                        <input type="hidden" name="formhash" value="{FORMHASH}" />
+                        <input type="hidden" name="bid" value="$book['bid']" />
+                        {if $action != 'add'}
+                        <input type="hidden" name="sid" value="$book['sid']" />
+                        {/if}
+                        <table cellspacing="0" cellpadding="0" class="tfm" border="0">
+                            <tbody>
+                                <tr>
+                                    <th>{lang library:warehouse}</th>
+                                    <td><input name="warehouse" type="text" value="$store['warehouse']" class="px"/></td>
+                                </tr>
+                                <tr>
+                                    <th>{lang library:accession_number}</th>
+                                    <td><input name="accession_number" type="text" value="$store['accession_number']" class="px"/></td>
+                                </tr>
+                                <tr>
+                                    <th>{lang library:owner}</th>
+                                    <td><input name="owner" type="text" value="$store['owner']" class="px"/></td>
+                                </tr>
+                                <tr>
+                                    <th></th>
+                                    <td>
+                                        <button type="submit" name="operate" class="pn pnp" value="add">
+                                            <strong>{lang add}</strong>
+                                        </button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+        <div class="sd">
+            {template library:nav}
+        </div>
+    </div>
+    {template library:footer}

@@ -1,0 +1,59 @@
+{template library:reservation_header}
+<div id="wp" class="wp">
+    <div id="ct" class="ct2 wp cl">
+	{template library:sub_search}
+        <div class="mn">
+            <div class="bm bmw">
+		{template library:reservation_nav}
+		<div class="bm_c cl">
+		    <div class="clct_list cl">
+			<!--{if $list}-->
+			<div class="cl tl">
+			    <table style="width:100%;">
+				<tr style="background-color: #F2F2F2;">
+				    <th>{lang library:book_title}</th>
+				    <th>{lang library:status}</th>
+				    <th>{lang library:reader}</th>
+				    <th>{lang library:order_number}</th>
+				    <th>{lang library:log}</th>
+				    <th class="by">{lang library:admin}</th>
+				</tr>
+				<!--{loop $list $obj}-->
+				<tr>
+				    <td><a href="plugin.php?id=library:book&action=info&bid=$obj['bid']">$obj['title']</a><br />$obj['isbn13']</td>
+				    <td>$reservation_status[$obj['status']]</td>
+				    <td><a href="plugin.php?id=library:index&action=reader&uid=$obj['uid']" target="_blank">$users[$obj['uid']]['username']</a></td>
+				    <td>$obj['order_number']</td>
+				    <td>$obj['logs']</td>
+				    <td class="by library_btn">
+					<!--{if 1== $_G['library']['adminid']}-->
+					<!--{if $obj['status'] == 0}-->
+					<a href="plugin.php?id=library:reservation&action=approve&rid=$obj['rid']">{lang library:approve}</a>
+					<!--{/if}-->
+					<a href="plugin.php?id=library:reservation&action=notify_fetch&rid=$obj['rid']">{lang library:notify_fetch}</a>
+					<a href="plugin.php?id=library:circulation&action=lend&username=$users[$obj['uid']]['username']&isbn=$obj['isbn13']">{lang library:lend_book}</a>
+					<!--{/if}-->
+					<div class="y">
+					    <a href="plugin.php?id=library:reservation&action=reservate_cancel&rid=$obj['rid']">{lang library:reservate_cancel}</a>
+					</div>
+				    </td>
+				</tr>
+				<!--{/loop}-->
+			    </table>
+			</div>
+			<div class="cl">
+			    $multi
+			</div>
+			<!--{else}-->
+			<p class="emp">{lang library:no_record}</p>
+			<!--{/if}-->
+		    </div>
+		</div>
+            </div>
+
+        </div>
+	<div class="sd">
+	    {template library:nav}
+	</div>
+    </div>
+    {template library:footer}

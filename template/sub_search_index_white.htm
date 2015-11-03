@@ -1,0 +1,38 @@
+<div style="padding-bottom:10px;">
+    <form action="plugin.php?id=library:book&action=search" onsubmit="searchFocus($('srchtxt'))" autocomplete="off" method="post" id="scform" target="_self">
+	<input type="hidden" value="library:book" name="id" />
+	<input type="hidden" value="search" name="action" />
+	<input type="hidden" value="{if $srchtxt}{$srchtxt}{else}{/if}" name="sctxt" id="sctxt" />
+	
+     
+     <ul style=" width:580px; height:40px; padding-left:220px; padding-top:20px;">
+        <li style="float:left; background:#fff; height:40px; ">
+            <input type="text" autocomplete="off" 
+            style="border:none; font-size:14px; width:400px;  height:32px;*height:26px; margin:3px 3px 0px 3px; padding:0px 5px 2px 5px;;" 
+            value="{if $srchtxt}{$srchtxt}{else}{lang enter_content}{/if}" 
+            id="srctxt" name="srchtxt" onchange="$('sctxt').value=this.value;"/>
+        </li>
+        <li style="float:left; ">
+        	<input type="submit" value="搜索" style=" border:#FFF solid 4px; background:#82673f; color:#FFF; font-size:18px; height:40px; width:88px; padding:0; margin:0;" />
+        </li>
+          
+         <li style="float:left;height:38px; width:38px; font-size:15px; line-height:20px; color:#B79567;  padding-left:10px; ">
+         	<a style="color:#fff;" href="plugin.php?id=library:book&action=searchpro">高级搜索</a>
+        </li>
+    </ul>
+    
+   
+	<div style="display: none" class="p_pop cl" id="sctype_menu">
+	    <ul>
+		<li><input type="radio" value="1" name="sctype" class="pr" id="sc_type1"><label title="{lang auction:search_type1}" for="sc_type1">{lang auction:search_type1}</label></li>
+		<li><input type="radio" value="2" name="sctype" class="pr" id="sc_type2"><label title="{lang auction:search_type2}" for="sc_type2">{lang auction:search_type2}</label></li>
+	    </ul>
+	</div>
+	<input type="hidden" value="{FORMHASH}" name="formhash" />
+    </form>
+    <script type="text/javascript">
+	initSearchmenu('srctxt');
+	simulateSelect('sctype');
+	$('scbar').style.display = 'none';
+    </script>
+</div>

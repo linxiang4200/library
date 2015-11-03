@@ -1,0 +1,93 @@
+{template library:circulation_header}
+<div id="wp" class="wp">
+    <div id="ct" class="ct2 wp cl">
+        <div class="mn">
+            <div class="bm bmw">
+                {template library:circulation_nav}
+                <div class="bm_c cl">
+                    <form method="post" action="plugin.php?id=library:circulation&action=return">
+                        <table cellspacing="0" cellpadding="0" class="tfm" border="0">
+                            <tbody>
+                                <tr>
+                                    <th>{lang library:isbn}</th>
+                                    <td>
+                                        <input name="isbn" type="text" value="$isbn" class="px"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>{lang library:reader}</th>
+                                    <td>
+                                        <input name="username" type="text" value="$username" class="px"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>{lang library:sno}</th>
+                                    <td>
+                                        <input name="sno" type="text" value="$sno" class="px"/>
+                                        <p class="xg1">{lang library:input_on_mutile_book}</p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th></th>
+                                    <td>
+                                        <button type="submit" name="operate" class="pn pnp" value="add">
+                                            <strong>{lang submit}</strong>
+                                        </button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </form>
+                </div>
+            </div>
+
+            <div class="bm bmw">
+                <div class="bm_h cl">
+                    <span class="y xw1">
+                    </span>
+                    <h2>
+                        {lang library:books_lended}
+                    </h2>
+                </div>
+                <div class="bm_c cl">
+                    <div class="clct_list cl">
+                        <div class="cl tl">
+                            <!--{if $stores_lended}-->
+                            <table style="width:100%;">
+                                <tr style="background-color: #F2F2F2;">
+                                    <th>{lang library:sno}</th>
+                                    <th>{lang library:book_title}</th>
+                                    <th>{lang library:lender}</th>
+                                    <th>{lang library:dateline_lend}</th>
+                                    <th>{lang library:dateline_return}</th>
+                                    <th>{lang library:admin}</th>
+                                </tr>
+                                <!--{loop $stores_lended $obj}-->
+                                <tr>
+                                    <td>$obj['sno']</td>
+                                    <td><a href="plugin.php?id=library:book&action=info&bid=$obj['bid']">$obj['title']</a><br />$obj['isbn13']</td>
+                                    <td class="by">
+                                        <a href="plugin.php?id=library:index&action=reader&uid=$obj['uid']" target="_blank">$users[$obj['uid']]['username']</a>
+                                    </td>
+                                    <td class="by">$obj['dateline_lend_info']</td>
+                                    <td class="by">$obj['dateline_return_info']</td>
+                                    <td><div class="library_btn">
+                                            <a href="plugin.php?id=library:circulation&action=return&sno=$obj['sno']">{lang library:return_book}</a>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <!--{/loop}-->
+                            </table>
+                            <!--{else}-->
+                            <p class="emp">{lang library:no_record}</p>
+                            <!--{/if}-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="sd">
+            {template library:nav}
+        </div>
+        {template library:footer}

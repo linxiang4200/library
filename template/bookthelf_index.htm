@@ -1,0 +1,40 @@
+{template library:bookthelf_header}
+<div id="wp" class="wp">
+	<div id="ct" class="ct2 wp cl">
+		{template library:sub_search}
+		<div class="mn">
+			<div class="bm bmw">
+				{template library:bookthelf_nav}
+				<div class="bm_c cl">
+					<div class="clct_list cl">
+						<!--{if $list}-->
+						<div class="cl tl">
+							<table style="width:100%;">
+								<tr style="background-color: #F2F2F2;">
+									<th></th>
+									<th>{lang library:name}</th>
+									<th class="by">{lang create_on}</th>
+								</tr>
+								<!--{loop $list $obj}-->
+								<tr>
+									<td><a href="plugin.php?id=library:bookthelf&action=info&btid=$obj['btid']">$obj['name']</a></td>
+								</tr>
+								<!--{/loop}-->
+							</table>
+						</div>
+						<div class="cl" style="padding-top:10px;">
+							$multi
+						</div>
+						<!--{else}-->
+						<p class="emp">{lang library:no_record}</p>
+						<!--{/if}-->
+					</div>
+				</div>
+			</div>
+
+		</div>
+		<div class="sd">
+			{template library:nav}
+		</div>
+	</div>
+	{template library:footer}

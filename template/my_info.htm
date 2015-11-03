@@ -1,0 +1,74 @@
+{template library:my_header}
+
+<div id="wp" class="wp">
+    <div id="ct" class="ct2 wp cl">
+        {template library:sub_search}
+        <div class="mn">
+            <div class="bm bmw">
+                {template library:my_nav}
+                <div class="bm_c cl">
+                    <form name="myInfoForm" action="" method="post" enctype="multipart/form-data">
+                        <input type="hidden" name="formhash" value="{FORMHASH}" />
+                        <div class="z" style="width:100%;">
+                            <table cellspacing="0" cellpadding="0" class="tfm" border="0">
+                                <tbody>
+                                    <tr><td colspan="2">
+                                            <div style="width:100%">
+                                                <div class="z">
+                                                    <table border="0">
+                                                        <tr>
+                                                            <td width="80">{lang library:receiver_name}:</td>
+                                                            <td><input type="text" name="receiver_name" value="$reader['receiver_name']" class="px" /></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td width="80">{lang library:receiver_address}:</td>
+                                                            <td>
+                                                                <textarea id="receiver_address" name="receiver_address" class="pt" style="width:600px;" cols="60" rows="3">$reader['receiver_address']</textarea>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td width="80">{lang library:mobile}:</td>
+                                                            <td><input type="text" name="mobile" value="$reader['mobile']" class="px" /></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td width="80">{lang library:receiver_phone}:</td>
+                                                            <td><input type="text" name="receiver_phone" value="$reader['receiver_phone']" class="px" /></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td width="80">{lang library:receiver_qq}:</td>
+                                                            <td><input type="text" name="receiver_qq" value="$reader['receiver_qq']" class="px" /></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td width="80">{lang library:receiver_time}:</td>
+                                                            <td><input type="text" name="receiver_time" value="$reader['receiver_time']" class="px" /></td>
+                                                        </tr>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </td></tr>
+                                    <tr>
+                                        <td width="80">{lang library:receiver_remark}:</td>
+                                        <td>
+                                            <textarea name="receiver_remark" class="pt" style="width:600px;" cols="80" rows="10">$reader['receiver_remark']</textarea>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td><button type="submit" name="submit" class="pn pnc" value="submit">
+                                                <span>{lang submit}</span>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+        <div class="sd">
+            {template library:nav}
+        </div>
+    </div>
+    {template library:footer}

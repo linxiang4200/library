@@ -1,0 +1,63 @@
+<div style="padding-bottom:10px;">
+    <form action="plugin.php?id=library:book&action=search" onsubmit="searchFocus($('srchtxt'))" autocomplete="off" method="post" id="scform" target="_self">
+	<input type="hidden" value="library:book" name="id" />
+	<input type="hidden" value="search" name="action" />
+	<input type="hidden" value="{if $srchtxt}{$srchtxt}{else}{/if}" name="sctxt" id="sctxt" />
+	<!--<table cellspacing="0" cellpadding="0">
+	    <tr>
+
+		<td><input type="text" autocomplete="off" value="{if $srchtxt}{$srchtxt}{else}{lang enter_content}{/if}" class="px z ausc" id="srctxt" name="srchtxt" onchange="$('sctxt').value=this.value;"/></td>
+		<td>
+		    <span class="ftid">
+			<select name="sctype" id="sctype" width="60" class="ps" selecti="0" style="display: none;">
+			    <option value="0" {if $sctype == 0}selected="selected"{/if}>{lang library:book_title}</option>
+			    <option value="1" {if $sctype == 1}selected="selected"{/if}>{lang library:isbn}</option>
+			    <option value="2" {if $sctype == 2}selected="selected"{/if}>{lang library:author}</option>
+			    <option value="3" {if $sctype == 3}selected="selected"{/if}>{lang library:summary}</option>
+			    <option value="4" {if $sctype == 4}selected="selected"{/if}>{lang library:category}</option>
+			</select>
+		    </span>
+		</td>
+		<td><button value="true" class="pn pnc" id="search_submit" name="searchsubmit" type="submit"><strong>{lang search}</strong></button></td>
+	    </tr>
+	</table>-->
+    <!--<ul style="border:#B79567 3px solid; width:328px; height:34px; margin:0; padding:0; background:#FFF">
+    <li>
+    <input type="text" autocomplete="off" style="border:none; font-size:14px; width:230px; padding:0px 5px 0px 5px;" value="{if $srchtxt}{$srchtxt}{else}{lang enter_content}{/if}" id="srctxt" name="srchtxt" onchange="$('sctxt').value=this.value;"/><input type="submit" value="搜索" style="border:none; background:#B79567; color:#FFF; font-size:18px; height:34px; width:88px; padding:0; margin:0;" />
+    
+    </li>
+      
+     <li style="height:38px; width:36px; font-size:16px; line-height:18px; color:#B79567; font-weight: bold; background:#E3E3E5; padding:0; margin: -35px -50px 0 5px; float: right "><a style="color:#B79567;" href="plugin.php?id=library:book&action=searchpro">高级搜索</a></li>
+     </ul>-->
+     
+     <ul style=" width:398px; height:40px;">
+        <li style="float:left; background:#B79567; height:40px; ">
+            <input type="text" autocomplete="off" 
+            style="border:none; font-size:14px; width:230px;  height:32px;*height:26px; margin:3px 3px 0px 3px; padding:0px 5px 2px 5px;;" 
+            value="{if $srchtxt}{$srchtxt}{else}{lang enter_content}{/if}" 
+            id="srctxt" name="srchtxt" onchange="$('sctxt').value=this.value;"/>
+        </li>
+        <li style="float:left; ">
+        	<input type="submit" value="搜索" style="border:none; background:#B79567; color:#FFF; font-size:18px; height:40px; width:88px; padding:0; margin:0;" />
+        </li>
+          
+         <li style="float:left;height:38px; width:38px; font-size:16px; line-height:20px; color:#B79567; font-weight: bold; background:#E3E3E5; padding-left:10px; ">
+         	<a style="color:#B79567;" href="plugin.php?id=library:book&action=searchpro">高级搜索</a>
+        </li>
+    </ul>
+    
+   
+	<div style="display: none" class="p_pop cl" id="sctype_menu">
+	    <ul>
+		<li><input type="radio" value="1" name="sctype" class="pr" id="sc_type1"><label title="{lang auction:search_type1}" for="sc_type1">{lang auction:search_type1}</label></li>
+		<li><input type="radio" value="2" name="sctype" class="pr" id="sc_type2"><label title="{lang auction:search_type2}" for="sc_type2">{lang auction:search_type2}</label></li>
+	    </ul>
+	</div>
+	<input type="hidden" value="{FORMHASH}" name="formhash" />
+    </form>
+    <script type="text/javascript">
+	initSearchmenu('srctxt');
+	simulateSelect('sctype');
+	$('scbar').style.display = 'none';
+    </script>
+</div>

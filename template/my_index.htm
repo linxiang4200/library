@@ -1,0 +1,293 @@
+{template library:my_header}
+<style>
+h2{ font-size:15px;}
+img{border-radius:0px;}
+.bm{ margin-top:40px;}
+.sk_index{ padding:20px 10px; height:170px;}
+.sk_index ul  { width:360px; overflow:hidden; float:left; vertical-align: middle;}
+.sk_index ul  img{ float:left; vertical-align: middle; border-radius:0px; }
+.sk_index span{ padding-left:20px; padding-top:20px; font-size:16px; line-height:37px;}
+.sk_index em{font-size:16px; color:#777} 
+
+.sk_button{ width:124px; height:36px; border:none;margin-left:0px; background:#bc9c6c; color:#FFF; font-size:16px;
+ -moz-border-radius: 3px;   -webkit-border-radius: 3px;   border-radius:3px;   }
+ 
+.sk_button_red{ width:124px; height:34px; border:none;margin-left:0px; background:#e84353; color:#FFF; font-size:16px;
+ -moz-border-radius: 3px;   -webkit-border-radius: 3px;   border-radius:3px;   }
+ 
+.sk_button_man{ width:200px; height:36px; border:none;margin-left:0px; background:#B79567; color:#FFF; font-size:16px;
+ -moz-border-radius: 3px;   -webkit-border-radius: 3px;   border-radius:3px;   }
+ 
+ .sk_button_man_s{ width:105px; height:36px; border:none;margin-left:0px; background:#846d4d; color:#FFF; font-size:16px;
+ -moz-border-radius: 3px;   -webkit-border-radius: 3px;   border-radius:3px;   }
+ 
+.sk_index dl{ width:185px; height:165px; float:left; background:#f5f5f5;}
+.sk_index dt{ padding:20px 20px 0px 20px; font-size:16px;}
+
+.sk_index dd{ padding:20px 10px 0px 10px; text-align:center; font-size:14px;}
+.sk_index dd em{ color:#2e9dd7;font-size:12px;}
+.sk_boder{ border-left:#E0E0E0 solid 1px;}
+
+.graph{ width:125px; padding-left:20px;}
+.blue{
+text-align:left;
+height:14px;
+display:block;
+border:none;
+background-color:#2e9dd7;
+}
+
+.sk_man{ padding:20px; font-size:16px;}
+
+.index_cat { width:980px;background:#000;   }
+.index_cat img { width:140px; height:196px;}
+.index_cat li{ width:140px; height:200px; margin: 20px 50px 20px 0px; padding:5px 0px 0px 0px;float:left; background:#fff; text-align:center}
+.cat_tips{ position:relative; bottom:39px; width:140px; height:36px; padding-left:0px;  background-color: #EAEAEA; overflow:hidden;opacity: 0.9;padding-top:3px; color:#6d6d6d; font-size:20px; font-weight: bold;}
+
+
+.sk_sc{ padding:20px; text-align:center;}
+
+.sk_cat_chek{ position: absolute; padding-top:-20px; display:none;width:20px; height:20px;}
+
+/*.sk_add_span{ position: absolute;  margin-top:-200px; margin-left:-80px; float:left; width:160px;}*/
+.sk_add_span{  float:left; width:160px; text-align:left; font-size:12px; line-height:30px; padding-bottom:20px;}
+.sk_add_span input{ width:65px; }
+</style>
+<div id="wp" class="wp">
+    <div id="ct" class="ct2 wp cl"  style="width:980;">
+    
+	<div class="bm bmw">
+		<div class="bm_h cl">
+		    <h2>个人书库状态 </h2>
+		</div>
+        
+		<div class="bm_c cl">
+        	<div class="sk_index">
+            
+            	<ul>
+                	<li>
+                    	<img width="160px" height="160px" src="data/attachment/common/{$stack['stack_img']}" />
+                    	<span class="em_title"><em>书库名称：</em>{$stack['stack_name']}</span><br />
+                        <span><em>书库所有者：</em>{$_G['username']}</span><br />
+                        <span><em>书库共享：</em>{if $stack['share_status'] == 1}所有人可见{else}仅自己可见{/if}</span><br />
+                    	<span><input type="submit" name="submit" value="编辑资料" class="sk_button"></span>
+                    </li>
+                     
+                </ul>
+                
+                <dl>
+                	<dt></dt>
+                	<dt><em>图书总数：</em>{$stack['book_num']}本</dt>
+                    <dt><em>类别：</em>{$stack['category_num']}类</dt>
+                </dl>
+                
+                <dl class="sk_boder">
+                	<dd style="font-size:12px;">
+                    	<em>{$stack['shengyu_book']}MB</em>/{$stack['capacity']}MB
+                        <div class="graph"><font class="blue" style="width:{$stack['shengyu_book_percent']}%;"></font></div>
+                    </dd>
+                    <dd>约可再添加{$stack['shengyu_book']}本</dd>
+                    <dd><input type="submit" name="button" value="扩展容量" class="sk_button_red"></dd>
+                </dl>
+                <dl class="sk_boder">
+                	<dd style="font-size:12px;">
+                    	<em>{$stack['shengyu_time']}天</em>/{$stack['total_time']}天
+                    	<div class="graph"><font class="blue" style="width:{$stack['total_time_percent']}%;"></font></div>
+                    </dd>
+                    <dd>剩余免费试用时间{$stack['shengyu_time']}天</dd>
+                    <dd><input type="submit" name="button" value="购买会员" class="sk_button_red"></dd>
+                </dl>
+            </div>
+        </div>
+      </div>
+      
+      
+      
+      <div class="bm bmw">
+		<div class="bm_h cl">
+		    <h2>管理个人书库 </h2>
+		</div>
+        
+		<div class="bm_c cl">
+        	<div class="sk_man">
+            	<span>图书分类 （{$stack['category_num']}）类 &nbsp;&nbsp;&nbsp;&nbsp;</span>
+                <input type="submit" name="button" value="购买会员" class="sk_button_man">
+                <span style="padding-left:160px;">
+                	<input type="submit" name="button" onclick="cat_edit()" value="修改" class="sk_button_man_s">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <input type="submit" name="button" onclick="cat_add()" value="添加" class="sk_button_man_s">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <input type="submit" name="button" onclick="del_cat()" value="删除" class="sk_button_man_s">
+                </span>
+            	
+                <hr />
+                
+                <div class="index_cat">
+                
+                    <ul>
+                    	<form method="post" action="plugin.php?id=library:my&action=edit_cat" enctype="multipart/form-data">
+                        {loop $category $key $obj}
+                        <li>
+                        	<!--{eval  $key++;}-->
+                            {if $key != 1}
+                        		<input type="checkbox" class="sk_cat_chek" name="sk_cat" value="{$obj['cat_id']}" />
+                            {/if}
+                            <a class="sk_cat_href" target="_blank" href="plugin.php?id=library:book&action=index&cid=0">
+                            <img width="140px"  src="data/attachment/common/{$obj['cat_img']}"></a>
+                            <div class="cat_tips">
+                            	<span class="cat_name_org">{$obj['cat_name']}</span>
+                                
+                                <span class="cat_name_edit" style="display:none">
+                                	<input name="cat_name_edit[{$obj['cat_id']}]" type="text" maxlength="5" value="{$obj['cat_name']}" />
+                                </span>
+                            </div>
+                        
+                        </li>
+                        {/loop}
+                        
+                        <li id="cat_edit" style="display:none">
+                        	<em style="font-size:12px; color:#F00">确定修改编辑的分类吗？</em><br /><br />
+                        	<input type="submit" name="button" onclick="cancel_del()" value="取消" class="sk_button_del_s">
+                        	<input type="submit" name="button"  value="确认修改" class="sk_button_del_s">
+                        </li>
+                        
+                        </form>
+                        <li id="cat_del" style="display:none">
+                            <em style="font-size:12px; color:#F00">确定删除所选分类吗？</em><br /><br />
+                            <input type="submit" name="button" onclick="cancel_del()" value="取消" class="sk_button_del_s">
+                            <input type="submit" name="button" onclick="confirm_del()" value="确认删除" class="sk_button_del_s">
+                        </li>
+                        
+                        <li id="cat_add" style="display:none">
+                        	<form method="post" action="plugin.php?id=library:my&action=add_cat" enctype="multipart/form-data">
+                            <strong style="color:#bc9c6c; font-size:15px;">添加新分类</strong>
+                            <span class="sk_add_span">
+                            分类图片：
+                            <input type="file" name="cat_img"  />
+                            <br />
+                            分类名称：
+                            <input type="tel" maxlength="5" name="cat_name" style="width:60px;" />
+                            </span>
+                            
+                        	<input type="button" name="button" onclick="cancel_add()" value="取消" style="float:left" >
+                            <input type="submit" name="submit"  value="确认添加" 
+                            style="float:left; margin-left:22px;">
+                            <input type="hidden" name="stack_id" value="{$stack['stack_id']}" />
+                            </form>
+                        </li>
+                    </ul>
+                
+    		    </div>
+    
+            </div>
+ 
+        </div>
+      </div>
+      
+      
+      <div class="bm bmw">
+		<div class="bm_h cl">
+		    <h2>收藏的书库 </h2>
+		</div>
+        
+		<div class="bm_c cl">
+        	<div class="sk_sc">
+            
+            	还没有收藏的书库
+            </div>
+ 
+        </div>
+      </div>
+      
+      
+      <div class="bm bmw">
+		<div class="bm_h cl">
+		    <h2>帮助 </h2>
+		</div>
+        
+		<div class="bm_c cl">
+        	<div class="sk_index">
+            
+            	
+            </div>
+ 
+        </div>
+      </div>
+      
+      
+    </div>
+    
+<script language="javascript">
+function del_cat()
+{
+	jQuery('#cat_del').show();
+	jQuery('.sk_cat_chek').show();
+	
+	jQuery('#cat_add').hide();
+	jQuery('#cat_edit').hide();
+	
+	jQuery('.cat_name_edit').hide();
+	jQuery('.cat_name_org').show();
+}
+
+function confirm_del()
+{
+		var str=""; 
+		jQuery('input[name="sk_cat"]:checked').each(function(){
+			str+=jQuery(this).val()+","; 
+		}) 
+		if(str == ''){
+			alert('请选择要删除的分类');
+			return false;	
+		}
+		
+		jQuery.get(
+			'plugin.php?id=library:my&action=del_cat&cat_id='+str,
+			function(data){
+					data = eval('('+data+')');
+					if(data.error == 0)
+					{
+						alert('删除成功！');
+						window.location.href = "plugin.php?id=library:my";
+					}else{
+						alert('删除失败，请重试！');
+					}
+				
+			}
+		);
+}
+
+function cancel_del()
+{
+	jQuery('#cat_del').hide();
+	jQuery('.sk_cat_chek').hide();
+}
+
+function cat_add()
+{
+	jQuery('#cat_add').show();
+	jQuery('#cat_del').hide();
+	
+	jQuery('.sk_cat_chek').hide();
+	jQuery('#cat_edit').hide();
+	
+	jQuery('.cat_name_edit').hide();
+	jQuery('.cat_name_org').show();
+}
+
+function cancel_add()
+{
+	jQuery('#cat_add').hide();
+	return false;
+}
+
+function cat_edit()
+{
+	jQuery('#cat_edit').show();
+	jQuery('.cat_name_edit').show();
+	jQuery('.cat_name_org').hide();
+	jQuery('#cat_del').hide();
+	jQuery('.sk_cat_chek').hide();
+	jQuery('#cat_add').hide();
+}
+</script>    
+
+	{template library:footer}

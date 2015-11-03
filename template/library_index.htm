@@ -1,0 +1,142 @@
+{template library:book_header}
+<style>
+body img{-moz-border-radius: 0px;-khtml-border-radius: 0px;-webkit-border-radius: 0px;border-radius: 0px;}
+.index_right{ width:350px; overflow:hidden; padding:40px 20px 20px 20px;}
+.index_right li{ height:70px;  font-size:18px; vertical-align:middle }
+.index_right  img{ text-align:center}
+.index_right h1{ font-size:26px;text-align:center;}
+
+.index_second{ width:970px; height:256px; padding:6px; font-size:16px;}
+.index_second ul{ width:466px; overflow:hidden; text-align:center; float:left; padding-top:50px; }
+.index_second li{  height:60px; padding-left:20px;}
+.index_second h1{ font-size:26px;}
+
+.index_three{ width:970px; height:210px; padding:40px 80px 40px 80px; }
+.index_three img{ vertical-align: top; float:left; padding-right:20px;}
+.index_three li{ width:222px; height:120px; float:left; padding:0px 30px 0px 22px;}
+.em_title{ font-weight:bold; font-size:16px; padding-right:10px;}
+.em_num{ background:#fd6c7a; color:#fff; padding:0px 10px 0px 10px;}
+.em_content{}
+</style>
+
+<div id="wp" class="wp">
+    <div id="ct" class="ct2 wp cl">
+    <div align="center" style="padding-top:40px;">
+    <img  src="template/cmszs_360bbs/images/gf_banner.png" />
+    <div style="padding-left:25px; padding-top:45px;">
+	{template library:sub_search_index}
+    </div>
+    </div>
+       
+    
+   
+        <div class="mn" style=" width:980px; padding-top:40px;">
+         <div class="bm bmw">
+			 
+            <div class="bm_c cl" style="padding: 1PX;">
+            
+                <div style="width:560px; padding:1px 1px 0 1px;  float:left">
+                     {template library:gf_banner} 
+                </div>
+                <div>
+                    <ul class="index_right">
+                        <li><h1>详实的资料，清晰的图片</h4></li>
+                        <li>全面展示了1970-1979年中国正式出版的文学图书和期刊，倾力搜集了同一时期非正式出版的文学书刊。</li>
+                        <li style="text-align:center; padding-top:80px;">
+                            <a href="plugin.php?id=library:book">
+                            <img style="-webkit-border-radius:0px;" src="template/cmszs_360bbs/images/enter.png" />
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+         </div>
+
+        </div>
+        
+		<div class="mn" style=" width:980px; padding-top:30px;">
+        	<div class="bm bmw">
+            
+               <!-- <div class="bm_h cl">
+                    <h2 id="tips_show">书友书库</h2>
+                </div>-->
+            
+            	<div class="index_second">
+                	<ul>
+                    	<li><h1>首家开放个人藏书电子管理平台</h1></li>
+                        <li>实现你的藏书电子化管理，与你的书友共享收藏成果。</li>
+                        <li>
+                            <a href="plugin.php?id=library:book">
+                            <img style="-webkit-border-radius:0px;" src="template/cmszs_360bbs/images/enter.png" />
+                            </a>
+                        </li>
+                    </ul>
+                    <div>
+                    <img style="-webkit-border-radius:0px;" src="template/cmszs_360bbs/images/book_fl.png" />
+                    <img style="-webkit-border-radius:0px;" src="template/cmszs_360bbs/images/xszn.png" />
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+        
+     <div class="mn" style=" width:980px; padding-top:30px;">
+        	<div class="bm bmw">
+            <div class="index_three">
+              <ul>
+              	<li>
+                 <a href="forum.php?mod=forumdisplay&fid=45"><img style="" src="template/cmszs_360bbs/images/wzgg.png" /></a>
+                 <span class="em_title">网站公告</span> 
+                 {if $fms[45][todayposts] > 0}<span class="em_num">$fms[45][todayposts]</span>{/if}<br />
+                 <span class="em_content">网站有什么新的动态都会在这里发布</span><br />
+                 <span>帖数：$fms[45][threads]</span>
+                </li>
+                
+                <li>
+                 <a href="forum.php?mod=forumdisplay&fid=46"><img style="" src="template/cmszs_360bbs/images/wxgc.png" /></a>
+                 <span class="em_title">文学观察</span> 
+                 {if $fms[46][todayposts] > 0}<span class="em_num">$fms[46][todayposts]</span>{/if}<br />
+                 <span class="em_content">文学新事、文学新论</span><br /><br />
+                 <span>帖数：$fms[46][threads]</span>
+                </li>
+                
+                <li>
+                 <a href="forum.php?mod=forumdisplay&fid=47"><img style="" src="template/cmszs_360bbs/images/rqsh.png" /></a>
+                 <span class="em_title">燃情书话</span> 
+                 {if $fms[47][todayposts] > 0}<span class="em_num">$fms[47][todayposts]</span>{/if}<br />
+                 <span class="em_content">淘书心得、读书随笔，闲言絮语</span><br />
+                 <span>帖数：$fms[47][threads]</span>
+                </li>
+                
+                <li>
+                 <a href="forum.php?mod=forumdisplay&fid=50"><img style="" src="template/cmszs_360bbs/images/jpgs.png" /></a>
+                 <span class="em_title">精品共赏</span> 
+                 {if $fms[50][todayposts] > 0}<span class="em_num">$fms[50][todayposts]</span>{/if}<br />
+                 <span class="em_content">秀一秀你珍藏的精品</span><br /><br />
+                 <span>帖数：$fms[50][threads]</span>
+                </li>
+                
+                <li>
+                 <a href="forum.php?mod=forumdisplay&fid=51"><img style="" src="template/cmszs_360bbs/images/bbkz.png" /></a>
+                 <span class="em_title">版本考证</span> 
+                 {if $fms[51][todayposts] > 0}<span class="em_num">$fms[51][todayposts]</span>{/if}<br />
+                 <span class="em_content">版本流传、版本变化</span><br /><br />
+                 <span>帖数：$fms[51][threads]</span>
+                </li>
+                
+                <li>
+                 <a href="forum.php?mod=forumdisplay&fid=52"><img style="" src="template/cmszs_360bbs/images/gskj.png" /></a>
+                 <span class="em_title">灌水空间</span> 
+                 {if $fms[52][todayposts] > 0}<span class="em_num">$fms[52][todayposts]</span>{/if}<br />
+                 <span class="em_content">只谈收藏，莫谈时政</span><br /><br />
+                 <span>帖数：$fms[52][threads]</span>
+                </li>
+              </ul>
+            </div>
+            </div>
+        </div>   
+  
+    	
+    </div>
+  
+    {template library:footer}

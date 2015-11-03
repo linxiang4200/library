@@ -1,0 +1,27 @@
+<th width="20%">
+<!--<span class="sort_name">排序</span>-->
+<span class="{if $sort == title}sort_type_on{else}sort_type{/if}">
+<a href="plugin.php?id=library:book&action=$action&cid=$cid&srchtxt=$srchtxt&sort=title{if $action == 'searchpro'}&title=$title&author=$author&publisher=$publisher&pubdate=$pubdate&format=$format&tags=$tags&summary=$summary&pubdate_sy=$pubdate_sy&pubdate_ey=$pubdate_ey&exception=$exception&submitgf=$submitgf&submitsy=$submitsy{/if}">{lang library:book_title}</a>
+</span>
+</th>
+<th width="10%">
+<span class="{if $sort == author}sort_type_on{else}sort_type{/if}">
+<a href="plugin.php?id=library:book&action=$action&cid=$cid&srchtxt=$srchtxt&sort=author{if $action == 'searchpro'}&title=$title&author=$author&publisher=$publisher&pubdate=$pubdate&format=$format&tags=$tags&summary=$summary&pubdate_sy=$pubdate_sy&pubdate_ey=$pubdate_ey&exception=$exception&submitgf=$submitgf&submitsy=$submitsy{/if}">{lang library:author}</a>
+</span></th>
+<th width="15%"><span class="{if $sort == publisher}sort_type_on{else}sort_type{/if}">
+<a href="plugin.php?id=library:book&action=$action&cid=$cid&srchtxt=$srchtxt&sort=publisher{if $action == 'searchpro'}&title=$title&author=$author&publisher=$publisher&pubdate=$pubdate&format=$format&tags=$tags&summary=$summary&pubdate_sy=$pubdate_sy&pubdate_ey=$pubdate_ey&exception=$exception&submitgf=$submitgf&submitsy=$submitsy{/if}">出版者</a>
+</span></th>
+<th width="12%"><span class="{if $sort == pubdate}sort_type_on{else}sort_type{/if}">
+<a href="plugin.php?id=library:book&action=$action&cid=$cid&srchtxt=$srchtxt&sort=pubdate{if $action == 'searchpro'}&title=$title&author=$author&publisher=$publisher&pubdate=$pubdate&format=$format&tags=$tags&summary=$summary&pubdate_sy=$pubdate_sy&pubdate_ey=$pubdate_ey&exception=$exception&submitgf=$submitgf&submitsy=$submitsy{/if}">{lang library:pubdate}</a>
+</span></th>
+<th width="10%"><span class="{if $sort == format}sort_type_on{else}sort_type{/if}">
+<a href="plugin.php?id=library:book&action=$action&cid=$cid&srchtxt=$srchtxt&sort=format{if $action == 'searchpro'}&title=$title&author=$author&publisher=$publisher&pubdate=$pubdate&format=$format&tags=$tags&summary=$summary&pubdate_sy=$pubdate_sy&pubdate_ey=$pubdate_ey&exception=$exception&submitgf=$submitgf&submitsy=$submitsy{/if}">开本</a>
+</span></th>
+<th width="10%"><span class="{if $sort == category}sort_type_on{else}sort_type{/if}"><a href="plugin.php?id=library:book&action=$action&cid=$cid&srchtxt=$srchtxt&sort=category{if $action == 'searchpro'}&title=$title&author=$author&publisher=$publisher&pubdate=$pubdate&format=$format&tags=$tags&summary=$summary&pubdate_sy=$pubdate_sy&pubdate_ey=$pubdate_ey&exception=$exception&submitgf=$submitgf&submitsy=$submitsy{/if}">{lang library:category}</a>
+</span></th>
+<th width="9%" class="by"><span class="{if $sort == notes}sort_type_on{else}sort_type{/if}">
+<!--<a href="plugin.php?id=library:book&action=$action&cid=$cid&srchtxt=$srchtxt&sort=notes{if $action == 'searchpro'}&title=$title&author=$author&publisher=$publisher&pubdate=$pubdate&format=$format&tags=$tags&summary=$summary&pubdate_sy=$pubdate_sy&pubdate_ey=$pubdate_ey&exception=$exception&submitgf=$submitgf&submitsy=$submitsy{/if}">附注</a>-->附注
+</span></th>
+<th class="by"><span class="{if $sort == tags}sort_type_on{else}sort_type{/if}"><!--<a href="plugin.php?id=library:book&action=$action&cid=$cid&srchtxt=$srchtxt&sort=tags{if $action == 'searchpro'}&title=$title&author=$author&publisher=$publisher&pubdate=$pubdate&format=$format&tags=$tags&summary=$summary&pubdate_sy=$pubdate_sy&pubdate_ey=$pubdate_ey&exception=$exception&submitgf=$submitgf&submitsy=$submitsy{/if}">
+{lang library:tags}</a>-->{lang library:tags}
+</span></th>

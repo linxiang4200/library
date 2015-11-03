@@ -1,0 +1,37 @@
+{template library:book_header}
+<div id="wp" class="wp">
+    <div id="ct" class="ct2 wp cl">
+        <div class="mn">
+            <div class="bm bmw">
+		{template library:book_nav}
+		<div class="bm_c cl">
+		    <form method="post" action="plugin.php?id=library:book&action=import_from_douban">
+                        <table cellspacing="0" cellpadding="0" class="tfm" border="0">
+                            <tbody>
+                                <tr>
+                                    <td width="130"><textarea name="items" class="pt" rows="16" style="width:120px;"></textarea></td>
+                                    <td>
+                                        <table>
+                                            <tr>
+                                                <td>
+                                                    <button type="submit" name="operate" class="pn pnp" value="add">
+                                                        <strong>{lang submit}</strong>
+                                                    </button>
+                                                </td>
+                                                <td>{lang library:one_isbn_per_line}</td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </form>
+		</div>
+            </div>
+
+        </div>
+	<div class="sd">
+	    {template library:nav}
+	</div>
+    </div>
+    {template library:footer}

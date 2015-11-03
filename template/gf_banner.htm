@@ -1,0 +1,28 @@
+<link href="template/cmszs_360bbs/common/jquery.slideBox.css" rel="stylesheet" type="text/css" />
+
+<script src="template/cmszs_360bbs/common/jquery.slideBox.js" type="text/javascript"></script>
+<script src="template/cmszs_360bbs/common/jquery.SuperSlide.2.1.1.js" type="text/javascript"></script>
+<script>
+jQuery(function($){
+
+	$('#demo3').slideBox({
+		duration : 0.4,//滚动持续时间，单位：秒
+		easing : 'linear',//swing,linear//滚动特效
+		delay : 5,//滚动延迟时间，单位：秒
+		hideClickBar : false,//不自动隐藏点选按键
+		clickBarRadius : 10
+	});
+
+});
+</script>
+
+<div id="demo3" class="slideBox">
+  <ul class="items">
+    <li><a href="plugin.php?id=library:book" title="."><img src="template/cmszs_360bbs/images/a.png"></a></li>
+    <li><a href="plugin.php?id=library:book" title="."><img src="template/cmszs_360bbs/images/b.png"></a></li>
+    <li><a href="plugin.php?id=library:book" title="."><img src="template/cmszs_360bbs/images/c.png"></a></li>
+    <li><a href="plugin.php?id=library:book" title="."><img src="template/cmszs_360bbs/images/d.png"></a></li>
+    <li><a href="plugin.php?id=library:book" title="."><img src="template/cmszs_360bbs/images/e.png"></a></li>
+   
+  </ul>
+</div>
