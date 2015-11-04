@@ -208,7 +208,7 @@ if ('index' == $action) {
                 $newCoverUrl = $attach['attachment'];
                $_bookData['cover_image'] = $newCoverUrl;
                
-                C::t('#library#library_book')->updateCover($bid, $newCoverUrl);
+                //C::t('#library#library_book')->updateCover($bid, $newCoverUrl);
                 $upload->save();
             }
             
